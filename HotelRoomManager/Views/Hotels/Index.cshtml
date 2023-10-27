@@ -1,0 +1,41 @@
+﻿@model IEnumerable<HotelRoomManager.Models.Hotel>
+
+@{
+    ViewData["Title"] = "Hotéis";
+}
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Hotéis</h1>
+        @if (@User.Identity.IsAuthenticated)
+        {
+            <a asp-action="Create" class="btn btn-primary">Cadastrar</a>
+        }
+    </div>
+
+    <div class="row">
+        @foreach (var hotel in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="data:image/jpeg;base64,@hotel.ImageFiles.First().ImageBase64" class="card-img-top card-image" alt="Imagem do Hotel">
+                    <div class="card-body">
+                        <h5 class="card-title">@hotel.Name</h5>
+                        <p class="card-text">@hotel.Description</p>
+                        <p class="card-text">CNPJ: @hotel.CNPJ</p>
+                        <p class="card-text">Endereço: @hotel.Address</p>
+                        <a asp-action="Details" asp-route-id="@hotel.Id" class="btn btn-secondary">Details</a>
+                        @if (@User.Identity.IsAuthenticated)
+                        {
+                            <a asp-action="Edit" asp-route-id="@hotel.Id" class="btn btn-primary">Edit</a> 
+                            <a asp-action="Delete" asp-route-id="@hotel.Id" class="btn btn-danger">Delete</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

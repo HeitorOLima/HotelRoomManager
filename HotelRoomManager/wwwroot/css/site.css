@@ -1,0 +1,98 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.card-image {
+    max-height: 300px;
+    width: auto;
+}
+.fixed-image {
+    max-height: 200px; /* Defina o tamanho máximo desejado */
+    width: auto; /* A largura se ajustará automaticamente */
+}
+.room-card {
+    max-width: 300px;
+    height: 100%; /* Define uma altura de 100% para o card */
+    display: flex;
+    flex-direction: column;
+}
+
+.room-card .card-body {
+    flex-grow: 1; /* Faz com que o conteúdo ocupe todo o espaço disponível verticalmente */
+}
+
+.background-image {
+    background-image: url('https://ilhasmaldivas.com.br/wp-content/uploads/2021/10/ilhas-maldivas-galeria-vakkaru-resort-02.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    text-align: center;
+}
+
+.center-content {
+    background-color: rgba(255, 255, 255, 0.7); 
+    padding: 20px; 
+    display: inline-block; 
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333; 
+    margin: 10px 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 10px 0;
+}
+
+.search-bar {
+    border: 2px solid #000; 
+    padding: 10px;
+    margin: 20px 0;
+}
+
+.search-button {
+    background-color: #000; 
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.form-btn {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+/* Estilo para a barra de navegação */
+.navbar {
+    background-color: #333; /* Cor de fundo da navbar */
+}
+
+    /* Estilo para o link da navbar */
+    .navbar a {
+        color: #000000 !important; /* Cor do texto dos links na navbar (branco) */
+        transition: color 0.3s; /* Transição suave na mudança de cor ao passar o mouse */
+    }
+
+        /* Estilo para o link da navbar ao passar o mouse */
+        .navbar a:hover {
+            color: #2b7dd5 !important; /* Cor do texto dos links na navbar ao passar o mouse */
+        }

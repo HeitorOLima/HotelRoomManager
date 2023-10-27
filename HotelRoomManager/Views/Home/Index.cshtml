@@ -1,0 +1,78 @@
+﻿@model HotelRoomManager.Dtos.HotelSearchDto
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Hotel Room Manager</title>
+    <style>
+        body {
+            background-image: url('https://ilhasmaldivas.com.br/wp-content/uploads/2021/10/ilhas-maldivas-galeria-vakkaru-resort-02.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: white; /* Cor do texto */
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Adiciona uma borda preta */
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: white; /* Subtítulo em branco */
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Adiciona uma borda preta */
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .search-button {
+            background-color: #007bff; /* Cor de fundo do botão */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-left: 10px; /* Espaçamento à esquerda para separar a barra de pesquisa do botão */
+        }
+
+            .search-button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hotel Room Manager</h1>
+        <h2>Seu quarto de hotel aqui</h2>
+        <form method="post" asp-action="SearchHotel" asp-controller="Home">
+            <div class="search-container">
+                <button class="search-button" type="submit">Começar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

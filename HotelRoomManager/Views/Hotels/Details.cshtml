@@ -1,0 +1,68 @@
+﻿@model HotelRoomManager.Dtos.HotelDetailsDto
+
+@{
+    ViewData["Title"] = "Detalhes do Hotel";
+}
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Detalhes do Hotel</h1>
+        <div class="d-flex">
+            @if (@User.Identity.IsAuthenticated)
+            {
+                <a asp-action="Create" asp-controller="Rooms" asp-route-Id="@Model.Hotel.Id" class="btn btn-success form-btn">Cadastrar Quarto</a>
+                <a asp-action="Edit" asp-route-id="@Model.Hotel.Id" class="btn btn-primary form-btn">Editar Hotel</a>
+            }
+            <a asp-action="Index" class="btn btn-secondary form-btn">Voltar</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <img src="data:image/jpeg;base64,@Model.Hotel.ImageFiles.First().ImageBase64" class="img-fluid" alt="Imagem do Hotel">
+        </div>
+        <div class="col-md-8">
+            <h5>@Model.Hotel.Name</h5>
+            <p>@Model.Hotel.Description</p>
+            <p>CNPJ: @Model.Hotel.CNPJ</p>
+            <p>Endereço: @Model.Hotel.Address</p>
+        </div>
+    </div>
+
+    <h2 class="mt-4">Quartos Disponíveis</h2>
+
+    <div class="row">
+        @if(Model.Rooms != null)
+        {
+            foreach (var room in Model.Rooms)
+            {
+                <div class="col-md-2 col-lg-3 mb-2">
+                    <div class="card room-card">
+                        <img src="data:image/jpeg;base64,@room.ImageFiles.FirstOrDefault()?.ImageBase64" class="card-img-top fixed-image" alt="Imagem do Quarto">
+                        <div class="card-body">
+                            <h5 class="card-title">@room.Name</h5>
+                            <p class="card-text">Ocupantes: @room.NumberOfOccupants</p>
+                            <p class="card-text">Adultos: @room.NumberOfAdults</p>
+                            <p class="card-text">Crianças: @room.NumberOfChildrem</p>
+                            <p class="card-text">Preço: @room.Price</p>
+                            <div style="justify-content:end">
+                                <a asp-action="Details" asp-controller="Rooms" asp-route-id="@room.Id" class="btn btn-secondary form-btn">Detalhes</a>
+                                @if (@User.Identity.IsAuthenticated)
+                                {
+                                    <a asp-action="Edit" asp-controller="Rooms" asp-route-id="@room.Id" asp-route-hotelId="@Model.Hotel.Id" class="btn btn-primary form-btn">Editar</a>
+                                    <a asp-action="Delete" asp-controller="Rooms" asp-route-id="@room.Id" class="btn btn-danger form-btn">Excluir</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <h2> Nenhum quarto cadastrado!</h2>    
+        }
+
+    </div>
+    
+</div>
